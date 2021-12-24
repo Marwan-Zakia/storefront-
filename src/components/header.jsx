@@ -1,16 +1,16 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
 import SimpleCart from "./cart";
-
+import { NavLink } from "react-router-dom";
 
 export default function ButtonAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static"  color="inherit" >
+      <AppBar position="static" color="inherit">
         <Toolbar>
           <IconButton
             size="large"
@@ -18,15 +18,16 @@ export default function ButtonAppBar() {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
-          >
-          </IconButton>
+          ></IconButton>
+
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-           OUR SOTRE
+            <NavLink to={"/"} style={{ textDecoration: "none" }}>
+              OUR SOTRE
+            </NavLink>
           </Typography>
-          <SimpleCart/>
+          <SimpleCart />
         </Toolbar>
       </AppBar>
-
     </Box>
   );
 }

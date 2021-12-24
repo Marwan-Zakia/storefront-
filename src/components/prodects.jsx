@@ -6,6 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function Product({
   addItem,
@@ -17,6 +18,7 @@ export default function Product({
   price,
   id,
 }) {
+  const navigate = useNavigate();
   return (
     <Grid item xs={4}>
       <Card sx={{ maxWidth: 345 }}>
@@ -56,7 +58,9 @@ export default function Product({
           >
             Add to Cart
           </Button>
-          <Button size="small">view details</Button>
+          <Button size="small" onClick={() => navigate(`/product/${id}`)}>
+            view details
+          </Button>
         </CardActions>
       </Card>{" "}
     </Grid>
