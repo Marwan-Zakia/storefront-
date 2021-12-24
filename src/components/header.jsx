@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import { ShoppingBasketTwoTone } from '@material-ui/icons';
+import SimpleCart from "./cart";
 
 
 export default function ButtonAppBar() {
@@ -24,10 +24,10 @@ export default function ButtonAppBar() {
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
            OUR SOTRE
           </Typography>
-        
-          <Button  color="inherit" icon={<ShoppingBasketTwoTone/>}  > <ShoppingBasketTwoTone/>        </Button>
+          <SimpleCart/>
         </Toolbar>
       </AppBar>
+
     </Box>
   );
 }

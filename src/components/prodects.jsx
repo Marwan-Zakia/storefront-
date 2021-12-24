@@ -8,12 +8,14 @@ import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
 
 export default function Product({
+  addItem,
   category,
   description,
   image,
   inventoryCount,
   name,
   price,
+  id,
 }) {
   return (
     <Grid item xs={4}>
@@ -33,7 +35,24 @@ export default function Product({
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Add to Cart</Button>
+          <Button
+            size="small"
+            onClick={() =>
+              addItem({
+                item: {
+                  id,
+                  category,
+                  description,
+                  image,
+                  inventoryCount,
+                  name,
+                  price,
+                },
+              })
+            }
+          >
+            Add to Cart
+          </Button>
           <Button size="small">view details</Button>
         </CardActions>
       </Card>{" "}

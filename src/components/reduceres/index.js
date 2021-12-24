@@ -1,30 +1,49 @@
 import { combineReducers } from "redux";
-import faker from "faker";
-let category = faker.commerce.department();
-let items = [];
-for (let i = 0; i < 10; i++) {
-  if (i === 5) category = faker.commerce.department();
-  items.push({
-    category,
-    name: faker.commerce.productName(),
-    description: faker.commerce.productDescription(),
-    price: faker.commerce.price(),
-    inventoryCount: faker.random.alphaNumeric(),
-    image: faker.random.image(),
-  });
-}
-let initialState = { customerId: null, items };
+import {
+  ADD_ITEM,
+  DELETE_ITEM,
+  CHANGE_QUANTITY,
+  INITIALIZE,
+} from "../action/consts";
+
+let initialState = { customerId: null, items: [] };
 
 const myReducer = (state = initialState, action) => {
   let { type, payload } = action;
 
   switch (type) {
-    case "INITIALIZE":
+    case INITIALIZE:
       return { ...state, customerId: payload.id };
 
-    case "ADD_ITEM":
-      return { items: [...state.items, payload.item] };
-
+    case ADD_ITEM:
+      const quantitys = state.items.find(({ id }) => id === payload.item.id);
+      if (quantitys) {
+        quantitys.quantity = quantitys.quantity + 1;
+        return {
+          items: [...state.items],
+        };
+      }
+      return {
+        items: [
+          ...state.items,
+          {
+            ...payload.item,
+            quantity: 1,
+          },
+        ],
+      };
+    case DELETE_ITEM:
+      const newItems = state.items.filter(({ id }) => id !== payload.id);
+      return {
+        items: [...newItems],
+      };
+      case CHANGE_QUANTITY:
+        const changeQuantity = state.items.find(({ id }) => id === payload.id);
+        changeQuantity.quantity = changeQuantity.quantity + payload.sgin;
+        return {
+          items: [...state.items],
+        };
+   
     case "CLEAR":
       return initialState;
 
