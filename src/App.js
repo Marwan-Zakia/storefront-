@@ -17,7 +17,7 @@ const App = ({ cart, initialize }) => {
 
       <If condition={isReadyForShopping}>
         <Then>
-          <Categories data={fakerData} />
+          <Categories  />
         </Then>
         <Else>
           <Button

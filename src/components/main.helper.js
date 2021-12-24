@@ -1,7 +1,7 @@
 import { Button, ButtonGroup} from "@mui/material";
 import React from 'react'
 
-export const makeCategoriesBtn = (data,setActiveItems) => {
+export const makeCategoriesBtn = (data=[],setActiveItems) => {
     const btn = [];
     const cat = [];
     data.forEach((item, i) => {
@@ -29,7 +29,7 @@ export const makeCategoriesBtn = (data,setActiveItems) => {
     return [btn, cat];
   };
 
-  export const makeCat = (data,cat) => {
+  export const makeCat = (data=[],cat) => {
     if (cat === "all") return data;
     return data.filter((item) => item.category === cat);
     };
