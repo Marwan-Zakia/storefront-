@@ -5,16 +5,25 @@ import { initialize } from "./components/action";
 import ButtonAppBar from "./components/header";
 import FixedBottomNavigation from "./components/footer";
 import Categories from "./components/main";
-import fakerData from "./components/faker";
+// import fakerData from "./components/faker";
 import faker from "faker";
 import { If, Then, Else } from "react-if";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ActionAreaCard from "./components/proddet";
+import ShoppingCart from "./components/shopcarts";
 const App = ({ cart, initialize }) => {
   const [isReadyForShopping, setIsReadyForShopping] = React.useState(false);
 
   return (
-    <div>
-      <ButtonAppBar />
+    <BrowserRouter>
 
+      <ButtonAppBar />
+ 
+      <Routes>
+      <Route path="/cart" element={<ShoppingCart />} />
+        <Route path="/product/:id" element={<ActionAreaCard />} />
+        <Route  path="/"
+          element={
       <If condition={isReadyForShopping}>
         <Then>
           <Categories  />
@@ -31,8 +40,12 @@ const App = ({ cart, initialize }) => {
           </Button>
         </Else>
       </If>
+          }
+    />
+      </Routes>
       <FixedBottomNavigation />
-    </div>
+
+    </BrowserRouter>
   );
 };
 
